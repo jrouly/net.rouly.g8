@@ -12,10 +12,12 @@ ThisBuild / resolvers += Release.bintrayResolver
 ThisBuild / publishTo := Some(Release.bintrayResolver)
 
 // Disable publishing for root project.
+publish := {}
 publishArtifact := false
 publishLocal := {}
-publish := {}
+publishTo := None
 
+// Common multi-project settings.
 lazy val commonSettings = Seq(
   name := s"\$projectName-" + name.value,
 ) ++ Release.bintraySettings
