@@ -1,7 +1,8 @@
 import sbt._
 
 // Global metadata.
-ThisBuild / name := "$name;format="normalize"$"
+def projectName = "$name;format="normalize"$"
+ThisBuild / name := projectName
 ThisBuild / organization := "net.rouly"
 ThisBuild / licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 ThisBuild / maintainer := "michel@rouly.net"
@@ -16,7 +17,7 @@ publishLocal := {}
 publish := {}
 
 lazy val commonSettings = Seq(
-  name := "$name;format="normalize"$-" + name.value,
+  name := s"\$projectName-" + name.value,
 ) ++ Release.bintraySettings
 
 // Core $name;format="normalize"$ package.
