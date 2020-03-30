@@ -1,3 +1,5 @@
+@Library("net.rouly.jenkins") _
+
 pipeline {
   agent any
 
@@ -17,22 +19,8 @@ pipeline {
 
       steps {
         script {
-          sh """
-            sbt new file://./ -o . --force
-          """
-        }
-      }
-    }
-
-    stage('compile and test template') {
-      steps {
-        script {
-          sh """
-            sbt -Dsbt.global.base=.sbt \
-              -Dsbt.boot.directory=.sbt \
-              -Dsbt.ivy.home=.ivy2 \
-              clean reload compile test
-          """
+          sbt("new file://.")
+          sbt("clean reload compile test")
         }
       }
     }
