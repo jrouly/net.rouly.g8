@@ -8,16 +8,6 @@ pipeline {
   }
 
   stages {
-    stage('clean') {
-      steps {
-        script {
-          sh """
-            rm -rf ~/.ivy2
-          """
-        }
-      }
-    }
-
     stage('build template') {
       agent {
         docker {
@@ -38,7 +28,10 @@ pipeline {
       steps {
         script {
           sh """
-            sbt clean reload compile test
+            sbt -Dsbt.global.base=.sbt \
+              -Dsbt.boot.directory=.sbt \
+              -Dsbt.ivy.home=.ivy2 \
+              clean reload compile test
           """
         }
       }
