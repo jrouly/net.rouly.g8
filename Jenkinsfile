@@ -13,7 +13,8 @@ pipeline {
     stage('build template') {
       agent {
         docker {
-          image "jrouly/sbt:1.3.8"
+          image 'jrouly/sbt:1.3.8'
+          args '-v $HOME/.sbt:/.sbt'
         }
       }
 
