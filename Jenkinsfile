@@ -12,7 +12,9 @@ pipeline {
   stages {
     stage('build template') {
       agent {
-        dockerfile true
+        dockerfile {
+          dir 'ci'
+        }
       }
 
       steps {
