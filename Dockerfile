@@ -1,7 +1,7 @@
 FROM openjdk:8-jre-alpine
 MAINTAINER michel@rouly.net
 
-ENV CONSCRIPT_HOME="$HOME/.conscript"
+ENV CONSCRIPT_HOME="/.conscript"
 ENV CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
 ENV PATH=$CONSCRIPT_HOME/bin:$PATH
 
