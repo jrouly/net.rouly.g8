@@ -1,4 +1,4 @@
-@Library("net.rouly.jenkins") _
+@Library('net.rouly.jenkins') _
 
 pipeline {
   agent any
@@ -13,6 +13,20 @@ pipeline {
     stage('build template') {
       agent {
         docker {
+          image 'moredip/giter8'
+        }
+      }
+
+      steps {
+        script {
+          sh 'g8 file://. -o . --force --name friendship'
+        }
+      }
+    }
+
+    stage('compile template') {
+      agent {
+        docker {
           image 'jrouly/sbt:1.3.8'
           args '-v $HOME/.sbt:/.sbt:ro'
         }
@@ -20,8 +34,7 @@ pipeline {
 
       steps {
         script {
-          sbt("new file://.")
-          sbt("clean reload compile test")
+          sbt('clean reload compile test')
         }
       }
     }
