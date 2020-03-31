@@ -20,7 +20,7 @@ pipeline {
 
       steps {
         script {
-          sh 'g8 file://. -o . --force --name friendship'
+          sh 'g8 file://. -o=. --force --name=friendship'
         }
       }
     }
