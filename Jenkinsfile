@@ -12,9 +12,7 @@ pipeline {
   stages {
     stage('build template') {
       agent {
-        docker {
-          image 'moredip/giter8'
-        }
+        dockerfile { true }
       }
 
       steps {
