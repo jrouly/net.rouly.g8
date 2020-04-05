@@ -14,7 +14,6 @@ pipeline {
       agent {
         dockerfile {
           dir 'ci'
-          args '-u 0:0'
         }
       }
 
