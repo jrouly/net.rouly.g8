@@ -8,6 +8,6 @@ RUN apk update && \
   chown -R 1000:1000 /conscript
 
 USER 1000
-
+WORKDIR /conscript
 ENV CONSCRIPT_HOME=/conscript
-RUN sh /conscript/setup.sh
+RUN sh setup.sh
