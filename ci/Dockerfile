@@ -6,8 +6,8 @@ RUN apk update && \
 
 USER 1000
 
-ADD conscript /conscript
+ADD conscript conscript
 
-ENV CONSCRIPT_HOME=/conscript
+ENV CONSCRIPT_HOME=conscript
 
-RUN sh /conscript/setup.sh
+RUN sh conscript/setup.sh
